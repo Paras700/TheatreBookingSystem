@@ -79,7 +79,6 @@ export const getSlot = (value) => {
 
 export const selectSlotData = (value,valueTheatre) => {
   return (dispatch) => {
-    console.log('=============theatre',valueTheatre);
     const users = JSON.parse(localStorage.getItem('Theatre'));
     const capacity = [];
     if(users!=null) {
@@ -91,9 +90,6 @@ export const selectSlotData = (value,valueTheatre) => {
         }
       })
     }
-    //-----------
-    //getmoviename
-    //-----------
     const movieData = JSON.parse(localStorage.getItem('Movie'))
     const movies = [];
     if(movieData!=null) {
@@ -109,8 +105,10 @@ export const selectSlotData = (value,valueTheatre) => {
        if(capacity!=null) {
          capacity.map(item =>{
            arrayObj.push({
-             movie:itemM,
-             capacity:item
+             movie: itemM,
+             capacity: item,
+             slot:value,
+             booked: ''
            })
          })
        }
@@ -122,24 +120,19 @@ export const selectSlotData = (value,valueTheatre) => {
   }
 }
 
-export const updateCapacity = (value,theatreValue) => {
+export const updateCapacity = (value,theatreValue,slotValueNew) => {
   return (dispatch) => {
       let theatre = JSON.parse(localStorage.getItem('Theatre'));
       if(theatre!=undefined) {
         theatre.map(item => {
-          console.log('reached - 1', parseInt(item.Capacity), value);
-
           if(parseInt(value) === parseInt(item.Capacity)) {
             if(theatreValue == item.Name) {
-              console.log('check----if');
               item.Capacity = parseInt(item.Capacity) - 1;
             }
           }
         })
       }
-    console.log('--------------',theatre);
-    localStorage.setItem('Theatre', JSON.stringify(theatre)); 
-    dispatch(updateCapacityNew());
+    localStorage.setItem('Theatre', JSON.stringify(theatre));
   }
 }
 
@@ -216,8 +209,8 @@ const initialState = {
   movie:[],
   capacity:[],
   arrayObj:[{
-    movie:'terminator',
-    capacity:'75'
+    movie:'MovieName',
+    capacity:'00'
   }],
   updateCapacity:[],
 }

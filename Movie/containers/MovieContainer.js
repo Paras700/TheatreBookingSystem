@@ -11,10 +11,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return  {
-//     items: state.student.items
-//   }
-// }
-
 export default connect(null,mapDispatchToProps)(Movie);

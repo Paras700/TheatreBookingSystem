@@ -8,8 +8,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getSlot: (slot)  => dispatch(getSlot(slot)),
     getUser: ()  => dispatch(getUser()),
-    selectSlotData: (selectSlot,selectTheatre) => dispatch(selectSlotData(selectSlot,selectTheatre)),
-    updateCapacity: (capacityValue,theatreValue) => dispatch(updateCapacity(capacityValue,theatreValue))
+    selectSlotData: (selectSlot,selectTheatre,slotValue) => dispatch(selectSlotData(selectSlot,selectTheatre,slotValue)),
+    updateCapacity: (capacityValue,theatreValue,slotValueNew) => dispatch(updateCapacity(capacityValue,theatreValue,slotValueNew))
   }
 }
 

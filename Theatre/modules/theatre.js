@@ -17,9 +17,8 @@ export const addItemData = (values) => {
          array.push(v);
        })
      }
-         array.push(values);
-         localStorage.setItem('Theatre', JSON.stringify(array));
-         //dispatch(setItemToLocalStorage(values));
+      array.push(values);
+      localStorage.setItem('Theatre', JSON.stringify(array));
      }
   }
 //

@@ -5,8 +5,8 @@ class Movie extends React.Component{
   constructor(props) {
     super(props);
       this.saveMovie = this.saveMovie.bind(this);
-       this.state = {
-        data: []
+        this.state = {
+          data: []
       }
   }
 
@@ -16,7 +16,6 @@ class Movie extends React.Component{
  }
 
  saveMovie(values) {
-   console.log('submit called',values);
    this.props.addMovielist(values);
  }
 
@@ -27,24 +26,28 @@ class Movie extends React.Component{
       )
     })
     return(
-      <div className="container">
+      <div className="w-50 p-3  container">
         <form onSubmit={this.props.handleSubmit(this.saveMovie)}>
-           <label>Theatre</label>
-           <Field name="Theatre" component="select">
-              {nameData}
-           </Field><br/>
-           <label>Movies</label>
+           <label className="m-2">Theatre</label>
            <Field
-             name="Movie"
-             component="input"
-             placeholder="Enter Movie Name"
-             type="text"
+              className="browser-default custom-select"
+              name="Theatre"
+              component="select">
+              {nameData}
+           </Field>
+           <br/>
+           <label className="m-2">Movies</label>
+           <Field
+              name="Movie"
+              component="input"
+              placeholder="Enter Movie Name"
+              type="text"
            />
            <button
              type="submit"
              className="btn btn-primary m-3">Save
            </button>
-      </form>
+       </form>
       </div>
     );
   }
